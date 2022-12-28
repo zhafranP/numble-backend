@@ -4,7 +4,7 @@ export const createUser = async (req, res) => {
   try {
     const { name, email, password, score } = req.body;
     const newUser = await pool.query(
-      "INSERT INTO users (name, email, password) VALUES($1, $2, $3) RETURNING *",
+      "INSERT INTO users (name, email, password, score) VALUES($1, $2, $3, $4) RETURNING *",
       [name, email, password]
     );
     res.status(201).json({
