@@ -11,11 +11,14 @@ export const getGame = async (req, res) => {
 export const updateScore = async (req, res) => {
   try {
     const { name } = req.params;
-    const {score} = req.body;
+    const { score } = req.body;
 
-    const newScore = await pool.query("UPDATE users SET score = score + $1 WHERE name=$2", [score, name])
+    const newScore = await pool.query(
+      "UPDATE users SET score = score + $1 WHERE name=$2",
+      [score, name]
+    );
 
-    res.json("Score Updated");
+    res.json(newScore);
   } catch (error) {
     console.error(error.message);
   }
