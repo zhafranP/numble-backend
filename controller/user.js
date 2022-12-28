@@ -13,6 +13,11 @@ export const createUser = async (req, res) => {
       data: newUser.rows[0],
     });
   } catch (error) {
+    res.status(201).json({
+      success: false,
+      message: error.message,
+      data: null,
+    });
     console.error(error.message);
   }
 };
